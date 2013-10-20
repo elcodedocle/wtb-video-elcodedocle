@@ -2,7 +2,7 @@
 <?
 global $options;
 foreach ($options as $value) {
-    if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
+    if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 		  <?if ($tg_300250_disable == "false") { ?>
@@ -17,11 +17,34 @@ foreach ($options as $value) {
           <? } ?>
 		  <? } else { ?>
 		  <? } ?>
-	
+	<ul class="randomvideos">
+		<li><h3>RECOMENDADAS</h3>
+			<ul>
+		<?php $recent = new WP_Query("showposts=6&orderby=rand"); while($recent->have_posts()) : $recent->the_post();?>
+			<li><div class="singleright">
+				<div class="singlerightimage">
+					<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><img src="<?php $values = get_post_custom_values("thumb"); echo $values[0]; ?>" width="136" height="90" alt="<?php the_title_attribute(); ?>" /></a>
+				</div>
+				<div class="singlerighti">
+					<div class="singlerightinfo">
+						<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php $tit = html_entity_decode(the_title('','',FALSE),ENT_COMPAT,'UTF-8'); echo htmlentities(mb_substr($tit, 0, 17, 'UTF-8'),ENT_COMPAT,'UTF-8'); if (strlen($tit) > 17) echo " ..."; ?></a>
+					</div>
+					<div class="postviews">
+						<?php the_time('j \d\e F, Y') ?>  
+					</div>
+					<div class="postviews">
+						<?php if(function_exists('the_views')) { the_views(); } ?>  
+					</div>
+				</div>
+			</div></li>
+		<?php endwhile; ?>
+			</ul>
+		</li>
+	</ul>	
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
 
 	<ul class="widget_categories">
-		<li><h3>Categories</h3>
+		<li><h3>Categorias</h3>
 			<ul>
 				<?php $categories = wp_list_categories('echo=0&title_li=');
 $categories = preg_replace('/View all posts filed under /','',$categories);
@@ -30,7 +53,7 @@ echo $categories; ?>
 		</li>
 	</ul>
 	<ul>
-		<li><h3>Latest Comments</h3>
+		<li><h3>Ultimos Comentarios</h3>
 <?php
 global $wpdb;
 $sql = "SELECT DISTINCT ID, post_title, post_password, comment_ID,

@@ -2,7 +2,7 @@
 <?
 global $options;
 foreach ($options as $value) {
-    if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
+    if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 
@@ -45,12 +45,12 @@ foreach ($options as $value) {
 <?php include (TEMPLATEPATH . "/featured.php"); ?> 
 
 	<div class="latestpart">
-		<h2>Latest Videos</h2>
+		<h2>Nuevos Videos</h2>
 		<div class="latestvideos">
 			<?php $recent = new WP_Query("showposts=15&offset=0"); while($recent->have_posts()) : $recent->the_post();?>	
 					<div class="latestvideo">
 					<div class="latestname">
-						<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php $tit = the_title('','',FALSE); echo substr($tit, 0, 20); if (strlen($tit) > 20) echo " ..."; ?></a>
+						<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php $tit = html_entity_decode(the_title('','',FALSE),ENT_COMPAT,'UTF-8'); echo htmlentities(mb_substr($tit, 0, 20, 'UTF-8'),ENT_COMPAT,'UTF-8'); if (strlen($tit) > 20) echo " ..."; ?></a>
 					</div>
 					<div class="latestthumb">
 						<?php if( get_post_meta($post->ID, "thumb", true) ): ?>
@@ -74,14 +74,14 @@ foreach ($options as $value) {
 	</div>
 
 	<div class="latestpart">
-		<h2>Most Viewed Videos</h2>
+		<h2>Videos Destacados</h2>
 		<div class="latestvideos">
 			<?php query_posts('v_sortby=views&v_orderby=desc&showposts=15') ?>
 
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>	
 					<div class="latestvideo">
 					<div class="latestname">
-						<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php $tit = the_title('','',FALSE); echo substr($tit, 0, 20); if (strlen($tit) > 20) echo " ..."; ?></a>
+						<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php $tit = html_entity_decode(the_title('','',FALSE),ENT_COMPAT,'UTF-8'); echo htmlentities(mb_substr($tit, 0, 20, 'UTF-8'),ENT_COMPAT,'UTF-8'); if (strlen($tit) > 20) echo " ..."; ?></a>
 					</div>
 					<div class="latestthumb">
 						<?php if( get_post_meta($post->ID, "thumb", true) ): ?>

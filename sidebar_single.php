@@ -2,7 +2,7 @@
 <?
 global $options;
 foreach ($options as $value) {
-    if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
+    if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 		  <?if ($tg_300250_disable == "false") { ?>
@@ -19,7 +19,7 @@ foreach ($options as $value) {
 		  <? } ?>
 	
 	<ul class="randomvideos">
-		<li><h3>Random Videos</h3>
+		<li><h3>RECOMENDADAS</h3>
 			<ul>
 		<?php $recent = new WP_Query("showposts=6&orderby=rand"); while($recent->have_posts()) : $recent->the_post();?>
 			<li><div class="singleright">
@@ -28,10 +28,10 @@ foreach ($options as $value) {
 				</div>
 				<div class="singlerighti">
 					<div class="singlerightinfo">
-						<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php $tit = the_title('','',FALSE); echo substr($tit, 0, 17); if (strlen($tit) > 17) echo " ..."; ?></a>
+						<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php $tit = html_entity_decode(the_title('','',FALSE),ENT_COMPAT,'UTF-8'); echo htmlentities(mb_substr($tit, 0, 17, 'UTF-8'),ENT_COMPAT,'UTF-8'); if (strlen($tit) > 17) echo " ..."; ?></a>
 					</div>
 					<div class="postviews">
-						<?php the_time('F jS, Y') ?>  
+						<?php the_time('j \d\e F, Y') ?>  
 					</div>
 					<div class="postviews">
 						<?php if(function_exists('the_views')) { the_views(); } ?>  

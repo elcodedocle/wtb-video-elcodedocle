@@ -2,7 +2,7 @@
 <?
 global $options;
 foreach ($options as $value) {
-    if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
+    if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 <div id="content">
@@ -21,10 +21,10 @@ foreach ($options as $value) {
 					<div class="videoarea">
 					<div class="video">
 						<?php if( get_post_meta($post->ID, "youtubeid", true) ): ?>
-						<object width="442" height="356">
-						<param name="movie" value="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US"></param>
-						<param  name="allowFullScreen" value="true"></param>
-						<embed  src="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowfullscreen="true" width="442" height="356"></embed>
+						<object width="442" height="356" type="application/x-shockwave-flash">
+						<param name="movie" value="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US" />
+						<param name="allowFullScreen" value="true" />
+						<embed src="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowfullscreen="true" width="442" height="356" />
 						</object> 
 						<?php else: ?>
 						<?php $values = get_post_custom_values("sembed"); echo $values[0]; ?>
@@ -46,15 +46,18 @@ foreach ($options as $value) {
 		<? } else { ?>
 		<? } ?>	
 						<div class="singleshare">
-							<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><a rel="nofollow" class="sh-face" href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" onclick="return fbs_click()" target="_blank" title="Click to share on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sfacebook.gif" alt="" /></a>
+							<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><a rel="nofollow" class="sh-face" href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" onclick="return fbs_click()" target="_blank" title="Compartir en Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sfacebook.gif" alt="Compartir en Facebook" /></a>
 						</div>
 						<div class="singleshare">
-							<a rel="nofollow" target="_blank" class="sh-tweet" href="http://twitter.com/home?status=Currently watching <?php the_permalink(); ?>" title="Click to share on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/stwitter.gif" alt="" /></a>
+							<a rel="nofollow" target="_blank" class="sh-tweet" href="http://twitter.com/home?status=Escuchando%20<?php the_permalink(); ?>" title="Compartir en Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/stwitter.gif" alt="Compartir en Twitter" /></a>
 						</div>
 						<div class="singleshare">
-							<a rel="nofollow" target="_blank" class="sh-su" href="http://www.stumbleupon.com/submit?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sstumble.gif" alt="" /></a>
+							<a rel="nofollow" target="_blank" class="sh-su" href="http://www.stumbleupon.com/submit?url=<?php the_permalink(); ?>&amp;title=<?php urlencode(the_title('','',FALSE)); ?>" title="Compartir en Stumbleupon"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sstumble.gif" alt="Compartir en Stumbleupon" /></a>
 						</div>
-					</div>
+						<div class="singleshare" style="margin: 0 auto; text-align: center;">
+							<!-- Place this tag where you want the share button to render. -->
+							<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24"></div>
+						</div>
 					</div>
 					
 					<div class="videoinfo">
@@ -62,15 +65,14 @@ foreach ($options as $value) {
 						<div class="postviewpart">
 						<?php if(function_exists('the_views')) { the_views(); } ?>
 						</div>
+										
+						<p><span style="font-weight:bold;">Categor&iacute;a:</span> <?php the_category(', ') ?></p>
 					
-						<p><font style="font-weight:bold;">Published:</font> <?php echo time_ago(); ?></p>
-					
-						<p><font style="font-weight:bold;">Category:</font> <?php the_category(', ') ?></p>
-					
-						<?php the_tags( '<p><font style="font-weight:bold;">Tags:</font> ', ', ', '</p>'); ?>
+						<?php the_tags( '<p><span style="font-weight:bold;">Tags:</span> ', ', ', '</p>'); ?>
 						
-						<p><font style="font-weight:bold;">Description:</font> <?php the_content(''); ?></p>
+						<p><span style="font-weight:bold;">Descripci&oacute;n del video:</span></p><?php the_content('Leer m&aacute;s&raquo;'); ?>
 					
+					</div>
 					</div>
 					</div>
 			<?php endwhile; ?>
@@ -83,12 +85,12 @@ foreach ($options as $value) {
 	<?php else: ?>	
 	
 	<div class="latestpart">
-	<h2 class="pagetitle">Nothing Found</h2>
+	<h2 class="pagetitle">No se ha encontrado nada</h2>
 	
 		<div class="latestvideos">
 
 			<div class="entry">
-				<p>Please, use the category menu or search a term.</p>
+				<p>Por favor, use el men&uacute; de categor&iacute;as o busque un t&eacute;rmino.</p>
 			</div>
 			
 		</div>

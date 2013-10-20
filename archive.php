@@ -12,15 +12,15 @@
 	<?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
 	<h2 class="pagetitle"><?php single_tag_title(); ?> Videos</h2>
 	<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-	<h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
+	<h2 class="pagetitle">Archivo para <?php the_time('F jS, Y'); ?></h2>
 	<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-	<h2 class="pagetitle">Archive for <?php the_time('F, Y'); ?></h2>
+	<h2 class="pagetitle">Archivo para <?php the_time('F, Y'); ?></h2>
 	<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-	<h2 class="pagetitle">Archive for <?php the_time('Y'); ?></h2>
+	<h2 class="pagetitle">Archivo para <?php the_time('Y'); ?></h2>
 	<?php /* If this is an author archive */ } elseif (is_author()) { ?>
-	<h2 class="pagetitle">Author Archive</h2>
+	<h2 class="pagetitle">Archivo del Autor</h2>
 	<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-	<h2 class="pagetitle">Blog Archives</h2>
+	<h2 class="pagetitle">Archivos del Blog</h2>
 	<?php } ?>
 		<div class="latestvideos">
 
@@ -55,12 +55,12 @@
 	<?php else: ?>	
 	
 	<div class="latestpart">
-	<h2 class="pagetitle">Nothing Found</h2>
+	<h2 class="pagetitle">No se ha encontrado nada</h2>
 	
 		<div class="latestvideos">
 
 			<div class="entry">
-				<p>Please, use the category menu or search a term.</p>
+				<p>Por favor, use el men&uacute; de categor&iacute;as o busque un t&eacute;rmino.</p>
 			</div>
 			
 		</div>

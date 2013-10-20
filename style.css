@@ -2,7 +2,7 @@
 Theme Name: WTB Video Green
 Theme URI: http://www.wordpressthemesbook.com/wtb-video-theme/
 Description: WTB Video theme by wordpressthemesbook.com
-Author: WTB
+Author: WTB (hacked by Gael Abadin for http://www.relaxacion.com)
 Author URI: http://www.wordpressthemesbook.com/
 */
 
@@ -55,7 +55,7 @@ height:71px;
 color:#fff;
 font-size:24px;
 font-family:Georgia,Arial,Helvetica,sans-serif;
-margin:19px 0 0 15px;
+margin:0px 0 0 15px;
 padding:0;
 }
 
@@ -234,6 +234,7 @@ padding:0;
 width:665px;
 float:left;
 overflow:hidden;
+min-height:540px;
 }
 
 .latestpart {
@@ -456,7 +457,7 @@ img[align="left"] { border:1px solid #e6e6e6; padding:3px;float: left; clear: le
 img[align="right"] { border:1px solid #e6e6e6; padding:3px;float: right; clear: right; }
 img[align="middle"] { border:1px solid #e6e6e6; padding:3px;display: block; margin-right: auto; margin-left: auto; float: none; clear: both; }
 
-/*—:[ image captioning ]:—*/
+/*ï¿½:[ image captioning ]:ï¿½*/
 .wp-caption { border-style: solid; border-color: #ddd; background-color: #eee; text-align: center; font-style: italic; }
 .wp-caption.alignleft { float: left; }
 .wp-caption.alignright { float: right; }

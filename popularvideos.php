@@ -13,7 +13,7 @@ Template Name: Popular Videos
 	<?php if (have_posts()) : ?>
 	<div class="latestpart">
 
-	<h2 class="pagetitle">Most Popular Videos</h2>
+	<h2 class="pagetitle">Videos M&aacute;s Populares</h2>
 
 		<div class="latestvideos">
 
@@ -48,12 +48,12 @@ Template Name: Popular Videos
 	<?php else: ?>	
 	
 	<div class="latestpart">
-	<h2 class="pagetitle">Nothing Found</h2>
+	<h2 class="pagetitle">Nada encontrado</h2>
 	
 		<div class="latestvideos">
 
 			<div class="entry">
-				<p>Please, use the category menu or search a term.</p>
+				<p>Por favor, use el menu de categor&iacute;as o busque un t&eacute;rmino.</p>
 			</div>
 			
 		</div>

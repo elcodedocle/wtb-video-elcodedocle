@@ -7,7 +7,7 @@
 	
 	<?php if (have_posts()) : ?>
 	<div class="latestpart">
-	<h2 class="pagetitle">Search Results for &#8216;<?php the_search_query(); ?>&#8217;</h2>
+	<h2 class="pagetitle">Resultados de la b&uacute;squeda para &#8216;<?php the_search_query(); ?>&#8217;</h2>
 	
 		<div class="latestvideos">
 
@@ -42,12 +42,12 @@
 	<?php else: ?>	
 	
 	<div class="latestpart">
-	<h2 class="pagetitle">Search Results for &#8216;<?php the_search_query(); ?>&#8217;</h2>
+	<h2 class="pagetitle">Resultados de la b&uacute;squeda para &#8216;<?php the_search_query(); ?>&#8217;</h2>
 	
 		<div class="latestvideos">
 
 			<div class="entry">
-				<p>Nothing found. Please, use the category menu or search a term.</p>
+				<p>No se ha encontrado nada. Por favor use el menu de categor&iacute;as o busque un t&eacute;rmino.</p>
 			</div>
 			
 		</div>
