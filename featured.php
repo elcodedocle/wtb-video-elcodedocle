@@ -1,6 +1,7 @@
 <?php
-$resim 	= mysql_query("SELECT * FROM ".$table_prefix."postmeta LEFT OUTER JOIN ".$table_prefix."posts ON ".$table_prefix."postmeta.post_id = ".$table_prefix."posts.id Where ".$table_prefix."postmeta.meta_key='featured' ORDER By ".$table_prefix."postmeta.post_id DESC Limit 4");
-		for ($j=0; $niphell=mysql_fetch_array($resim); $j++){
+$resim  = $wpdb->get_results("SELECT * FROM ".$table_prefix."postmeta LEFT OUTER JOIN ".$table_prefix."posts ON ".$table_prefix."postmeta.post_id = ".$table_prefix."posts.id Where ".$table_prefix."postmeta.meta_key='featured' ORDER By ".$table_prefix."postmeta.post_id DESC Limit 4", ARRAY_A);
+                if (is_array($resim)) for ($j=0; $j<count($resim); $j++){
+                $niphell = $resim[$j];
 		$ust .= '<li class="ui-tabs-nav-item" id="nav-fragment-'.($j+1).'"><a href="#fragment-'.($j+1).'"><img src="'.$niphell[meta_value].'" width="120" height="90" alt="" /></a></li>
 			';
 		$alt .='<div id="fragment-'.($j+1).'" class="ui-tabs-panel" style="">
