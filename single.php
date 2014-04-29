@@ -21,11 +21,19 @@ foreach ($options as $value) {
 					<div class="videoarea">
 					<div class="video">
 						<?php if( get_post_meta($post->ID, "youtubeid", true) ): ?>
-						<object width="442" height="356" type="application/x-shockwave-flash">
-						<param name="movie" value="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US" />
-						<param name="allowFullScreen" value="true" />
-						<embed src="http://www.youtube.com/v/<?php $values = get_post_custom_values("youtubeid"); echo $values[0]; ?>?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowfullscreen="true" width="442" height="356" />
-						</object> 
+						<iframe 
+							id="ytplayer" 
+							type="text/html" 
+							width="442" 
+							height="356" 
+							src="http://www.youtube.com/embed/<?php 
+								$values = get_post_custom_values("youtubeid"); 
+								echo $values[0]; 
+							?>?autoplay=0&amp;origin=http://www.relaxacion.com" 
+							frameborder="0" 
+							allowfullscreen
+						>
+						</iframe> 
 						<?php else: ?>
 						<?php $values = get_post_custom_values("sembed"); echo $values[0]; ?>
 						<?php endif; ?>
