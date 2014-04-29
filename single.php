@@ -29,7 +29,7 @@ foreach ($options as $value) {
 							src="http://www.youtube.com/embed/<?php 
 								$values = get_post_custom_values("youtubeid"); 
 								echo $values[0]; 
-							?>?autoplay=0&amp;" 
+							?>?autoplay=0" 
 							frameborder="0" 
 							allowfullscreen
 						>
