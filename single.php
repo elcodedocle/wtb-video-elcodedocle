@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?
+<?php 
 global $options;
 foreach ($options as $value) {
     if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
@@ -41,18 +41,18 @@ foreach ($options as $value) {
 					
 					<div class="videoright">
 					
-		<?if ($tg_200200_disable == "false") { ?>
-		<? if ($tg_200_200) { ?>
+		<?php if ($tg_200200_disable == "false") { ?>
+		<?php if ($tg_200_200) { ?>
 			<div class="singlead">
-				<? echo stripslashes($tg_200_200); ?>
+				<?php echo stripslashes($tg_200_200); ?>
 			</div>
-		<? } else { ?>
+		<?php } else { ?>
 			<div class="singlead">
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/200200.gif" alt="" />
 			</div>
-		<? } ?>
-		<? } else { ?>
-		<? } ?>	
+		<?php } ?>
+		<?php } else { ?>
+		<?php } ?>	
 						<div class="singleshare">
 							<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><a rel="nofollow" class="sh-face" href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" onclick="return fbs_click()" target="_blank" title="Compartir en Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sfacebook.gif" alt="Compartir en Facebook" /></a>
 						</div>

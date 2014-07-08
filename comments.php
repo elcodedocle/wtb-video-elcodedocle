@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * @package WordPress
  * @subpackage Default_Theme
@@ -10,7 +10,7 @@
 
 	if ( post_password_required() ) { ?>
 		<p class="nocomments">This post is password protected. Enter the password to view comments.</p>
-	<?php
+	<?php 
 		return;
 	}
 ?>

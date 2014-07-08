@@ -1,42 +1,42 @@
 <?php get_header(); ?>
-<?
+<?php 
 global $options;
 foreach ($options as $value) {
     if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
 
- <?if ($tg_socials_disable == "false") { ?>	  
+ <?php if ($tg_socials_disable == "false") { ?>	  
 <div id="socialtop"></div>
 <div id="social">
-		  <?if ($tg_72890_disable == "false") { ?>
-		  <? if ($tg_728_90) { ?>
+		  <?php if ($tg_72890_disable == "false") { ?>
+		  <?php if ($tg_728_90) { ?>
 	<div class="topad">
-          <? echo stripslashes($tg_728_90); ?>
+          <?php echo stripslashes($tg_728_90); ?>
 	</div>
-          <? } else { ?>
+          <?php } else { ?>
 	<div class="topad">
 		<img src="<?php bloginfo('stylesheet_directory'); ?>/images/72890.gif" alt="" />	
 	</div>
-          <? } ?>
-		  <? } else { ?>
-		  <? } ?>
+          <?php } ?>
+		  <?php } else { ?>
+		  <?php } ?>
 	<div class="socialbook">
 		<ul>
-			<li><a href="<? echo $tg_twitter; ?>" title="Follow Us on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_facebook; ?>" title="Follow Us on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/facebook.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_linkedin; ?>" title="Follow Us on Linkedin"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/linkedin.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_youtube; ?>" title="Follow Us on Youtube"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/youtube.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_technorati; ?>" title="Follow Us on Technorati"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/technorati.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? if ($tg_rssurl) { ?><? echo $tg_rssurl; ?><? } else { ?><?php bloginfo('rss2_url'); ?><? } ?>" title="Follow Us by RSS"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_flickr; ?>" title="Follow Us on Flickr"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/flickr.png" alt="Follow Us on Twitter" /></a></li>
-			<li><a href="<? echo $tg_stumbleupon; ?>" title="Follow Us on Stumbleupon"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/stumbleupon.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_twitter; ?>" title="Follow Us on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_facebook; ?>" title="Follow Us on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/facebook.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_linkedin; ?>" title="Follow Us on Linkedin"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/linkedin.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_youtube; ?>" title="Follow Us on Youtube"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/youtube.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_technorati; ?>" title="Follow Us on Technorati"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/technorati.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php if ($tg_rssurl) { ?><?php echo $tg_rssurl; ?><?php } else { ?><?php bloginfo('rss2_url'); ?><?php } ?>" title="Follow Us by RSS"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_flickr; ?>" title="Follow Us on Flickr"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/flickr.png" alt="Follow Us on Twitter" /></a></li>
+			<li><a href="<?php echo $tg_stumbleupon; ?>" title="Follow Us on Stumbleupon"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/stumbleupon.png" alt="Follow Us on Twitter" /></a></li>
 		</ul>
 	</div>
 </div>
 <div id="socialbottom"></div>
-<? } else { ?>
- <? } ?>
+<?php } else { ?>
+ <?php } ?>
 		  
 <div id="content">
 

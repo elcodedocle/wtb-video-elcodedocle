@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
 Template Name: Popular Videos
 */
@@ -61,7 +61,7 @@ Template Name: Popular Videos
 	</div>
 	
 	<?php endif; ?>
-	<? wp_reset_query(); ?>
+	<?php wp_reset_query(); ?>
 
 </div>
 

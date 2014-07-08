@@ -1,4 +1,4 @@
-<?php
+<?php 
 add_action( 'init', 'register_my_menus' );
 
 function register_my_menus() {
@@ -14,7 +14,7 @@ function time_ago( $type = 'post' ) {
 	return __('hace') . " " . human_time_diff($d('U'), current_time('timestamp'));
 }
 ?>
-<?php
+<?php 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
 	    'name' => 'Sidebar',
@@ -59,7 +59,7 @@ if ( function_exists('register_sidebar') ) {
  }
 }
 ?>
-<?php
+<?php 
 function mySearchFilter($query) {
 if ($query->is_search) {
 $query->set('post_type', 'post');
@@ -69,7 +69,7 @@ return $query;
 
 add_filter('pre_get_posts','mySearchFilter');
 ?>
-<?php
+<?php 
 /*
     Plugin Name: Add Dynamic Meta Boxes
     Plugin URI: http://www.clarksonenergyhomes.com/wordpress/wordpress-plugin-add-dynamic-meta-boxes/
@@ -283,7 +283,7 @@ if ( !function_exists('get_custom_field') ) {
 }
 
 ?>
-<?php
+<?php 
 $themename = "WTB Video";
 $shortname = "tg";
 
@@ -523,7 +523,7 @@ function mytheme_admin() {
             <td><small><?php echo $value['desc']; ?></small></td>
        </tr><tr><td colspan="2" style="margin-bottom:5px;"></td></tr><tr><td colspan="2"></td></tr>
 
-		<?php
+		<?php 
         break;
             
 		case "checkbox":
@@ -560,7 +560,7 @@ function mytheme_admin() {
 </p>
 </form>
 
-<?php
+<?php 
 }
 
 add_action('admin_menu', 'mytheme_add_admin'); ?>

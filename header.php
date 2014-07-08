@@ -21,7 +21,7 @@
 <meta name="robots" content="noindex,follow" />
 <?php } ?>
 <?php if ( is_single() ) { ?>
-<?php
+<?php 
 global $post;
 //sizin resimlerin bulunduðu özel alaný yaz.
 $resimadresi = get_post_meta($post->ID, 'thumb', true);
@@ -68,7 +68,7 @@ jQuery(document).ready(function(){
 </head>
 
 <body>
-<?
+<?php 
 global $options;
 foreach ($options as $value) {
     if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
@@ -78,11 +78,11 @@ foreach ($options as $value) {
 
 <div id="header">
 	<div class="logo">
-	<? if ($tg_title) { ?>
-				<h1><a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><? echo $tg_title; ?></a></h1>
-    <? } else { ?>
+	<?php if ($tg_title) { ?>
+				<h1><a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><?php echo $tg_title; ?></a></h1>
+    <?php } else { ?>
 				<a href="<?php echo get_option('home'); ?>/" title="<?php bloginfo('name'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" /></a>
-    <? } ?>
+    <?php } ?>
 	</div>
 	<div class="favor">
 		<ul>

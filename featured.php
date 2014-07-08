@@ -1,4 +1,4 @@
-<?php
+<?php 
 $resim  = $wpdb->get_results(
     "
         SELECT * FROM ".$table_prefix."postmeta 

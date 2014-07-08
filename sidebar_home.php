@@ -1,22 +1,22 @@
 <div class="sidebar_right">
-<?
+<?php 
 global $options;
 foreach ($options as $value) {
     if (get_option( $value['id'],FALSE ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_option( $value['id'] ); }
 }
 ?>
-		  <?if ($tg_300250_disable == "false") { ?>
-		  <? if ($tg_300_250) { ?>
+		  <?php if ($tg_300250_disable == "false") { ?>
+		  <?php if ($tg_300_250) { ?>
 	<div class="rightad">
-          <? echo stripslashes($tg_300_250); ?>
+          <?php echo stripslashes($tg_300_250); ?>
 	</div>
-          <? } else { ?>
+          <?php } else { ?>
 	<div class="rightad">
 		<img src="<?php bloginfo('stylesheet_directory'); ?>/images/300250.gif" alt="" />
 	</div>
-          <? } ?>
-		  <? } else { ?>
-		  <? } ?>
+          <?php } ?>
+		  <?php } else { ?>
+		  <?php } ?>
 	<ul class="randomvideos">
 		<li><h3>RECOMENDADAS</h3>
 			<ul>
@@ -54,7 +54,7 @@ echo $categories; ?>
 	</ul>
 	<ul>
 		<li><h3>Ultimos Comentarios</h3>
-<?php
+<?php 
 global $wpdb;
 $sql = "SELECT DISTINCT ID, post_title, post_password, comment_ID,
 comment_post_ID, comment_author, comment_date_gmt, comment_approved,
